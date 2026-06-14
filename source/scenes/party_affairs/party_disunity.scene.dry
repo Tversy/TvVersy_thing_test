@@ -22,10 +22,15 @@ The party is being torn apart by internal dissent. Upset at the leadership and g
 Something must be done to reinforce party unity.
 
 - @enforce_unity
-- @concessions_reformists
-- @concessions_center
 - @concessions_left
+- @expel_left
+- @concessions_center
+- @expel_center1
+- @expel_center2
 - @concessions_labor
+- @expel_labor
+- @concessions_reformists
+- @expel_reformists
 - @concessions_neorevisionists
 - @do_nothing
 
@@ -121,6 +126,6 @@ title: Expel the labor supporters.
 view-if: labor_dissent > 30
 choose-if: labor_strength < (10 + left_strength) or labor_strength < (10 + reformist_strength)
 unavailable-subtitle: The labors faction are too strong.
-available-subtitle: Why are we expelling our base of support?
+subtitle: Why are we expelling our base of support?
 on-arrival: labor_split = 1;
 go-to: labor_split
