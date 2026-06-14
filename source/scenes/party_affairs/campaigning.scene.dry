@@ -17,6 +17,7 @@ Whether or not we are in an electoral campaign, the party is always trying to br
 - @rural: Rural workers and small farmers, who have felt neglected by us in the past.
 - @unemployed: The unemployed.
 - @catholics: Catholics, who typically support the Center Party.
+- @women: Young women and "traditional" women, who typically support the bourgeois parties. 
 - @root: We either don't want to or cannot campaign right now.
 - @easy_discard
 
@@ -68,3 +69,13 @@ view-if: peoples_party == 1
 on-arrival: catholics_spd += 6*(1-dissent); resources -= 1
 
 We have increased our campaigning among Catholics.
+
+@women
+subtitle: -1 resources
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources.
+on-arrival: womens_rights += 1; workers_spd += 4*(1-dissent); new_middle_spd += 4*(1-dissent); rural_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent); resources -= 1
+
+We have increased our campaigning among women.
+
+[? if spd_r < 50 : Unfortunately, women still disproportionately support the bourgeois parties. ?]
