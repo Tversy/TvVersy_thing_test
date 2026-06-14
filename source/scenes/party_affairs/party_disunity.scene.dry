@@ -103,7 +103,7 @@ go-to: left_split
 @expel_center1
 title: Expel the centrists.
 view-if: center_dissent > 30 and left_split and not reformists_split
-choose-if: (center_strength + left_strength) < (10 + reformist_strength)
+choose-if: center_strength < (10 + reformist_strength)
 unavailable-subtitle: The centers faction are too strong.
 on-arrival: center_split = 1;
 go-to: center_split
@@ -111,7 +111,7 @@ go-to: center_split
 @expel_center2
 title: Expel the centrists.
 view-if: center_dissent > 30 and reformists_split and not left_split
-choose-if: (center_strength + reformist strength) < (10 + left_strength)
+choose-if: center_strength < (10 + left_strength)
 unavailable-subtitle: The centers faction are too strong.
 on-arrival: center_split = 1;
 go-to: center_split
