@@ -82,20 +82,45 @@ on-arrival: labor_dissent += 1; left_dissent += 1; center_dissent += 1; reformis
 
 Let the factions bicker; perhaps dissent is healthy for the party.
 
-# TODO: should we be allowed to preemptively expel factions?
+# Probably need some fix and TODO need need additional in depth event
 
 @expel_reformists
 title: Expel the dissident reformists.
-view-if: reformist_dissent > 30
+view-if: reformist_dissent > 30 and not left_split
+choose-if: reformists_strength < (10 + left_strength)
+unavailable-subtitle: The reformists faction are too strong.
+on-arrival: reformists_split = 1;
+go-to: reformists_split
 
 @expel_left
 title: Expel the dissident leftists.
-view-if: left_dissent > 30
+view-if: left_dissent > 30 and not reformists_split
+choose-if: left_strength < (10 + reformist_strength)
+unavailable-subtitle: The lefts faction are too strong.
+on-arrival: left_split = 1;
+go-to: left_split
 
-@expel_center
+@expel_center1
 title: Expel the centrists.
-view-if: center_dissent > 30
+view-if: center_dissent > 30 and left_split and not reformists_split
+choose-if: center_strength + left_strength < (10 + reformist_strength)
+unavailable-subtitle: The centers faction are too strong.
+on-arrival: center_split = 1;
+go-to: center_split
+
+@expel_center2
+title: Expel the centrists.
+view-if: center_dissent > 30 and reformists_split and not left_split
+choose-if: center_strength + reformist strength < (10 + left_strength)
+unavailable-subtitle: The centers faction are too strong.
+on-arrival: center_split = 1;
+go-to: center_split
 
 @expel_labor
 title: Expel the labor supporters.
 view-if: labor_dissent > 30
+choose-if: labor_strength < (10 + left_strength) or labor_strength < (10 + reformist_strength)
+unavailable-subtitle: The labors faction are too strong.
+available-subtitle: Why are we expelling our base of support?
+on-arrival: labor_split = 1;
+go-to: labor_split
