@@ -24,3 +24,4 @@ if (!Q.economic_plan) {
 !}
 
 - @game_over: Game over.
+- @root: Nah.
