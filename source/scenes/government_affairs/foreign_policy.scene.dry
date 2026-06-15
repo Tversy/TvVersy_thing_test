@@ -176,7 +176,7 @@ title: Provide material support to Austrian democracy against the Dollfuß dicta
 subtitle: -1 budget
 choose-if: budget >= 1
 view-if: austrian_parliament_seen = 1 and austrian_civil_war_seen = 0
-on-arrival: budget -= 1; sdapo_strength += 3; left_dissent -= 6; center_dissent -= 6
+on-arrival: budget -= 1; sdapo_strength += 3; left_dissent -= 6; center_dissent -= 6; austria_annexation_progress += 1
 
 In public, we provide verbal backing to Austrian democracy, wage a war of words against Austrofascism, and promulgate additional trade sanctions. Privately, we provide financial and various forms of "support" to our comrades in Austria in their struggle against dictatorship.
 
@@ -206,7 +206,7 @@ Fascist Italy remains a problem, and the Soviet Union also lies outside the syst
 
 @negotiate_austria
 title: Negotiate with Austrian government about annexation.
-view-if: (customs_union or europabund) and austria_victory = 1 and austria_annexation_progress < 3
+view-if: customs_union or europabund and austria_victory = 1 and austria_annexation_progress < 3 and not austria_annexed
 on-arrival: austria_annexation_progress += 1
 
 Due to the civil war, Austrian economy and society is in ruins. Using the foreign ministry we can negotiate with the SDAPÖ government to help them on the work of reconstruction and towards closer ties with us, bringing us closer to the dream of German unity
@@ -215,7 +215,7 @@ Due to the civil war, Austrian economy and society is in ruins. Using the foreig
 @annex_austria
 title: We can annex Austria!
 subtitle: [? if europabund: Allied Powers, Germany and Austria talk about a merger between the Weimar Republic and Austria. It seems, that the trust, we built up, may help us to finally achieve this. ?][? if not europabund: German and Austrian representatives discuss about a unifcation between Austria and Germany. The Allied Powers may not like it, but a state for all German people has support among all bases. ?]
-view-if: (customs_union or europabund) and austria_victory = 1 and austria_annexation_progress >= 3 and not austria_annexed
+view-if: customs_union or europabund and austria_victory = 1 and austria_annexation_progress >= 3 and not austria_annexed
 on-arrival: austria_annexed = 1; catholics += 10; rural += 5; banking_crisis_timer = 2 if not banking_crisis_seen and not europabund; west_relation -= 3 if not europabund; east_relation -= 3 if not europabund; new_middle_spd += 5*(1-dissent); old_middle_spd += 5*(1-dissent); workers_spd += 7*(1-dissent); rural_spd += 5*(1-dissent); catholics_spd += 5*(1-dissent); new_middle_nsdap -= 5*(1-dissent); old_middle_nsdap -= 5*(1-dissent);
 
 [? if europabund: After the formation of the Europabund, France and our eastern neighbors has become increasingly close to Germany, their hostility are mostly gone and replaced with signs of friendship. In these conditions, we can finally start to complete one of the major goals stated in our party program, the Anschluss with Austria. Negotiations have been going smoothly, as Germany has shown Europe and the world its pacifism after the great war, the general framework of the unification has been layed out by Rudolf Breitscheid and economic integration of Austria begun. Now the German and Austrian government will hamour out the details of the anschluss with the supervision of the Europabund, which will take quite some time. ?]
